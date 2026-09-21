@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="Super Calculator — آلة حاسبة علمية متقدمة وسريعة">
+<title>Super Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+<header class="topbar">
+  <div><h1>Super Calculator</h1><p>آلة حاسبة علمية متقدمة</p></div>
+  <button id="themeBtn" class="icon-btn" aria-label="تبديل المظهر">☼</button>
+</header>
+
+<section class="display-card">
+  <div class="display-meta"><span id="modeLabel">DEG</span><span id="memoryLabel"></span></div>
+  <input id="expression" class="expression" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="0">
+  <div id="result" class="result">0</div>
+</section>
+
+<section class="tools">
+  <button id="angleBtn">DEG</button><button id="historyBtn">السجل</button>
+  <button id="copyBtn">نسخ</button><button id="clearHistoryBtn">مسح السجل</button>
+</section>
+
+<section class="scientific grid">
+  <button data-insert="sin(">sin</button><button data-insert="cos(">cos</button><button data-insert="tan(">tan</button><button data-insert="asin(">sin⁻¹</button><button data-insert="acos(">cos⁻¹</button><button data-insert="atan(">tan⁻¹</button>
+  <button data-insert="log(">log</button><button data-insert="ln(">ln</button><button data-insert="sqrt(">√</button><button data-insert="^2">x²</button><button data-insert="^">xʸ</button><button data-insert="!">x!</button>
+  <button data-insert="π">π</button><button data-insert="e">e</button><button data-insert="(">(</button><button data-insert=")">)</button><button data-insert="%">%</button><button id="ansBtn">ANS</button>
+</section>
+
+<section class="memory grid">
+  <button id="mc">MC</button><button id="mr">MR</button><button id="mplus">M+</button><button id="mminus">M−</button><button id="clear">AC</button><button id="backspace">⌫</button>
+</section>
+
+<section class="keypad grid">
+  <button data-insert="7">7</button><button data-insert="8">8</button><button data-insert="9">9</button><button class="op" data-insert="÷">÷</button>
+  <button data-insert="4">4</button><button data-insert="5">5</button><button data-insert="6">6</button><button class="op" data-insert="×">×</button>
+  <button data-insert="1">1</button><button data-insert="2">2</button><button data-insert="3">3</button><button class="op" data-insert="−">−</button>
+  <button data-insert="0">0</button><button data-insert=".">.</button><button data-insert="±">±</button><button class="op" data-insert="+">+</button>
+  <button class="equals" id="equals">=</button>
+</section>
+
+<section id="history" class="history hidden"><h2>السجل</h2><div id="historyList"></div></section>
+<footer>يدعم لوحة المفاتيح • يحفظ السجل والمظهر على جهازك</footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
