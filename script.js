@@ -9,7 +9,7 @@ function normalize(s){return s.replaceAll("×","*").replaceAll("÷","/").replace
 function tokenize(s){const re=/\s*(?:(\d+(?:\.\d*)?|\.\d+)|([A-Za-z]+)|(\^|[+\-*/%(),!]))/y,a=[];let p=0;while(p<s.length){re.lastIndex=p;const m=re.exec(s);if(!m)throw Error("syntax");a.push(m[1]??m[2]??m[3]);p=re.lastIndex}return a}
 function evaluate(input){let t=tokenize(normalize(input)),i=0;
  const peek=()=>t[i], eat=x=>{if(x&&peek()!==x)throw Error("syntax");return t[i++]};
- function primary(){let x;if(peek()==="-"){eat();return-primary()} if(peek()==="+"){eat();return primary()}
+ function primary(){let x;if(peek()==="-"){eat();return -primary()} if(peek()==="+"){eat();return primary()}
   if(peek()==="("){eat();x=add();eat(")")} else if(peek()==="PI"){eat();x=Math.PI} else if(peek()==="e"){eat();x=Math.E}
   else if(/^[A-Za-z]/.test(peek()||"")){const f=eat();eat("(");const v=add();eat(")");const map={sin:v=>Math.sin(deg(v)),cos:v=>Math.cos(deg(v)),tan:v=>Math.tan(deg(v)),asin:v=>out(Math.asin(v)),acos:v=>out(Math.acos(v)),atan:v=>out(Math.atan(v)),log:v=>Math.log10(v),ln:v=>Math.log(v),sqrt:v=>Math.sqrt(v)};if(!map[f])throw Error("function");x=map[f](v)}
   else{x=Number(eat());if(!Number.isFinite(x))throw Error("number")}
